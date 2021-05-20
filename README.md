@@ -485,10 +485,10 @@ The best way to think about Airwire is simply an OOP wrapper around a REST API. 
     "state": {
         "foo": "abcdef"
     },
-    "changes" {
+    "changes": {
         "foo": "bar"
     },
-    "calls" {
+    "calls": {
         "save": [
             {
                 "name": "Example task",
