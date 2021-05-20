@@ -413,7 +413,6 @@ If you'd also like a `this.$airwire` helper (to avoid having to use `window.Airw
 
 ```ts
 require('./airwire');
-require('./bootstrap');
 
 import { createApp, reactive } from 'vue';
 
