@@ -471,6 +471,31 @@ To use the plugin, use this call **before importing Alpine**:
 Airwire.plugin('alpine')()
 ```
 
+## Testing
+
+Airwire components are fully testable using fluent syntax:
+
+```php
+// Assertions against responses use send()
+test('properties are shared only if they have the Wired attribute', function () {
+    expect(TestComponent::test()
+        ->state(['foo' => 'abc', 'bar' => 'xyz'])
+        ->send()
+        ->data
+    )->toBe(['bar' => 'xyz']); // foo is not Wired
+});
+
+// Assertions against component state use hydrate()
+test('properties are shared only if they have the Wired attribute', function () {
+    expect(TestComponent::test()
+        ->state(['foo' => 'abc', 'bar' => 'xyz'])
+        ->hydrate()->bar
+    )->toBe('xyz'); // foo is not Wired
+});
+```
+
+You can look at the [package's tests](https://github.com/archtechx/airwire/blob/master/tests/Airwire/ValidationTest.php) to see real-world examples.
+
 ## Protocol spec
 
 Airwire components aren't signed or fingerprinted in any way. They're completely stateless just like a REST API, which allows for instantiation from the frontend. This is in contrast to Livewire which doesn't allow any direct state changes — they all have to be "approved" and signed by the backend.
