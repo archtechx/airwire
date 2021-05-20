@@ -2,6 +2,7 @@
 
 namespace Airwire;
 
+use Airwire\Commands\ComponentCommand;
 use Airwire\Commands\GenerateDefinitions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
@@ -12,7 +13,7 @@ class AirwireServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->commands([GenerateDefinitions::class]);
+        $this->commands([GenerateDefinitions::class, ComponentCommand::class]);
 
         $this->loadDefaultTransformers();
 

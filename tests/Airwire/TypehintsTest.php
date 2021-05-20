@@ -139,6 +139,7 @@ test('model can be passed to a method', function () {
     expect(Product::count())->toBe(1);
 });
 
+// todo wired attribute flags on methods as well
 test('models can be encoded back to the id', function () {
     Product::create(['id' => 1, 'name' => 'foo', 'price' => 10, 'description' => 'bar']);
 

@@ -1,14 +1,14 @@
-const chokidar = require('chokidar');
 const exec = require('child_process').exec;
 
 class AirwireWatcher {
-    constructor(files = 'app/**/*.php') {
+    constructor(chodikar, files = 'app/**/*.php') {
+        this.chodikar = chodikar;
         this.files = files;
     }
 
     apply(compiler) {
         compiler.hooks.afterEnvironment.tap('AirwireWatcher', () => {
-            chokidar
+            this.chodikar
                 .watch(this.files, { usePolling: false, persistent: true })
                 .on('change', this.fire);
         });

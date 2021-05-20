@@ -1,3 +1,4 @@
+import Airwire from '.';
 import './airwired'
 
 declare module 'airwire' {

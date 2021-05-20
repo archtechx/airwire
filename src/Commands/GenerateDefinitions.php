@@ -12,7 +12,7 @@ class GenerateDefinitions extends Command
 
     protected $signature = 'airwire:generate';
 
-    protected $description = 'Command description';
+    protected $description = 'Generate TypeScript definitions.';
 
     public function handle()
     {
