@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "strict": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "skipLibCheck": true
+  },
+  "include": ["resources/js/**/*"], "typeAcquisition": {"include": ["resources/js/helperTypes.d.ts"]}
+}

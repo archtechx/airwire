@@ -1,0 +1,32 @@
+{
+    "name": "archtechx/airwire",
+    "description": "A lightweight full-stack component layer that doesn't dictate your front-end framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Samuel Štancl",
+            "email": "samuel@archte.ch"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Airwire\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Airwire\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^1.2",
+        "illuminate/testing": "^8.42",
+        "pestphp/pest-plugin-laravel": "^1.0.0"
+    },
+    "require": {
+        "illuminate/support": "^8.42",
+        "illuminate/console": "^8.42",
+        "orchestra/testbench": "^6.17"
+    }
+}
