@@ -412,12 +412,12 @@ As mentioned above, you can integrate Airwire with Vue using a single line of co
 If you'd also like a `this.$airwire` helper (to avoid having to use `window.Airwire`), you can use our Vue plugin. Here's how an example `app.ts` might look like:
 
 ```ts
-require('./airwire');
+import Airwire from './airwire';
 
 import { createApp, reactive } from 'vue';
 
 createApp(require('./components/Main.vue').default)
-    .use(window.Airwire.plugin('vue')(reactive))
+    .use(Airwire.plugin('vue')(reactive))
     .mount('#app')
 
 declare module 'vue' {
