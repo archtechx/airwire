@@ -163,7 +163,7 @@ class TypehintComponent extends Component
     #[Wired]
     public Product $model;
 
-    #[Wired] #[Encode(method: 'getKey')] // todo add the same feature for Decode
+    #[Wired] #[Encode(method: 'getKey')] // todo add the same feature for Decode (but then we may have to update the type generator)
     public Product $model2;
 
     #[Wired]

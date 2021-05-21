@@ -32,15 +32,17 @@ class TypehintConverter
         };
     }
 
-    public function convertType(string $php): string
+    public function convertType(string $php, string $target = 'property'): string
     {
         if (class_exists($php)) {
             if (is_subclass_of($php, Model::class) && ($model = $php::first())) {
-                return $this->convertModel($model);
+                return $target === 'parameter'
+                    ? $this->convertModel($model) . '|string|number' // Models can be resolved from IDs
+                    : $this->convertModel($model);
             }
 
-            if (is_subclass_of($php, Collection::class) && ($model = $php::first())) {
-                return 'array';
+            if (is_subclass_of($php, Collection::class)) {
+                return 'any'; // Later maybe typed arrays?
             }
 
             return 'any';
@@ -200,7 +202,7 @@ class TypehintConverter
             if (isset($object->$property) && gettype($object->$property) === $type->getName()) {
                 $results[] = $this->typeFromValue($object->$property);
             } else {
-                $results[] = $this->convertType($type->getName());
+                $results[] = $this->convertType($type->getName(), 'property');
             }
         }
 
@@ -226,14 +228,14 @@ class TypehintConverter
                 $types[] = 'null';
             }
 
-            $parameters[$parameter->getName()] = join(' | ', array_map(fn (ReflectionNamedType $type) => $this->convertType($type->getName()), $types));
+            $parameters[$parameter->getName()] = join(' | ', array_map(fn (ReflectionNamedType $type) => $this->convertType($type->getName(), 'parameter'), $types));
         }
 
         $parameters = collect($parameters)->map(fn (string $type, string $name) => "{$name}: {$type}")->join(', ');
 
         $return = match ($type = $reflection->getReturnType()) {
             null => 'any',
-            default => $this->convertType($type),
+            default => $this->convertType($type, 'return'),
         };
 
         return "{$method}(" . $parameters . "): AirwirePromise<{$return}>;";

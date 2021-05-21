@@ -187,7 +187,7 @@ export class Component<AirwireComponent = TypeMap[keyof TypeMap]>
 
                 return reason
             })
-            .then((json: ComponentResponse<AirwireComponent>) => { // todo this then() shouldn't execute if previous catch() executes
+            .then((json: ComponentResponse<AirwireComponent>) => {
                 if (json?.metadata?.errors) {
                     this.errors = json.metadata.errors
                 }
@@ -227,7 +227,11 @@ export class Component<AirwireComponent = TypeMap[keyof TypeMap]>
         let result = null;
         try {
             result = callback();
-        } catch (e) { }
+        } catch (e) {
+            this.pausedRequests = false;
+
+            throw e
+        }
 
         this.pausedRequests = false;
 
