@@ -33,9 +33,7 @@ class ComponentCommand extends Command
         }
         PHP);
 
-        $this->line("✨ Component app/Airwire/{$name}.php has been created!\n");
-
-        $this->warn("🚧 Don't forget to register the component! Add the following line to AppServiceProvider:");
-        $this->line("\n\n    Airwire::component('" . Str::snake($name) . "', {$name}::class);\n\n");
+        Component::register($name);
+        $this->line("✨ Component app/Airwire/{$name}.php has been created and registered!\n");
     }
 }
