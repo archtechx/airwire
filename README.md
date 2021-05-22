@@ -54,7 +54,7 @@ interface CreateUser {
     email: string;
     password: string;
     password_confirmation: string;
-    create(): AirwirePromise<User>;
+    submit(): AirwirePromise<User>;
     errors: { ... }
 
     // ...
