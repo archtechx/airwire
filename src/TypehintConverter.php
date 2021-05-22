@@ -68,7 +68,7 @@ class TypehintConverter
             $this->namedTypes[$alias] = 'pending'; // We do this to avoid infinite loops when recursively generating model type definitions
 
             $values = $model->toArray()
-                ?: $model->first()->toArray() // If this model is empty, attempt finding the first one in the DB
+                ?: $model->first()?->toArray() // If this model is empty, attempt finding the first one in the DB
                 ?: collect(Schema::getColumnListing($model->getTable()))->mapWithKeys(fn (string $column) => [$column => []])->toArray(); // [] for any
 
             $this->namedTypes[$alias] = '{ ' .
