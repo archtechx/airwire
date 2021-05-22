@@ -28,5 +28,12 @@
     "require": {
         "illuminate/support": "^8.42",
         "illuminate/console": "^8.42"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Airwire\\AirwireServiceProvider"
+            ]
+        }
     }
 }
