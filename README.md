@@ -54,7 +54,7 @@ interface CreateUser {
     email: string;
     password: string;
     password_confirmation: string;
-    create(): AirwirePromise<User>;
+    submit(): AirwirePromise<User>;
     errors: { ... }
 
     // ...
@@ -259,7 +259,7 @@ It supports converting received IDs to model instances:
 public User $user;
 ```
 
-Converting arays/objects to unsaved instances:
+Converting arrays/objects to unsaved instances:
 ```php
 // received: ['name' => 'Try Airwire on a new project', 'priority' => 'highest']
 public function addTask(Task $task)
