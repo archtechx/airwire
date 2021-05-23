@@ -50,8 +50,7 @@ class ComponentCommand extends Command
             ));
 
             $this->line("✨ Component app/Airwire/{$name}.php has been created and registered!");
-        } catch (Exception $exception)
-        {
+        } catch (Exception $exception) {
             $this->error('The component could not be registered. Please check your app/Providers/AppServiceProvider.php');
         }
     }
