@@ -46,7 +46,7 @@ class ComponentCommand extends Command
 
             file_put_contents($path, str_replace(
                 "function boot()\n    {",
-                "function boot()\n    {\n        \Airwire\Airwire::component('{$snake}', \App\Airwire\{$name}::class);",
+                "function boot()\n    {\n        \\Airwire\\Airwire::component('{$snake}', \\App\\Airwire\\{$name}::class);",
                 file_get_contents($path)
             ));
 
