@@ -15,7 +15,7 @@ class ComponentCommand extends Command
     {
         $name = Str::studly($this->argument('name'));
 
-        if (!is_dir($path = app_path('Airwire'))) {
+        if (! is_dir($path = app_path('Airwire'))) {
             mkdir($path);
         }
 
