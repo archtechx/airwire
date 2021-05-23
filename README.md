@@ -111,7 +111,13 @@ mix.webpackConfig({
 })
 ```
 
-Next, run `php artisan airwire:generate` to generate the initial TS files. This will create `airwire.ts` and `airwired.d.ts`. Open your `app.ts` and the former:
+Next, generate the initial TS files:
+
+```
+php artisan airwire:generate
+```
+
+This will create `airwire.ts` and `airwired.d.ts`. Open your `app.ts` and import the former:
 
 ```ts
 import Airwire from './airwire'
