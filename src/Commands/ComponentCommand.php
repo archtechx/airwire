@@ -2,6 +2,7 @@
 
 namespace Airwire\Commands;
 
+use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 
