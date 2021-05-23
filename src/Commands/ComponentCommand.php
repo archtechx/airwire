@@ -15,7 +15,7 @@ class ComponentCommand extends Command
     {
         $name = Str::studly($this->argument('name'));
 
-        if (! is_dir($path = app_path('Airwire'))) {
+        if (!is_dir($path = app_path('Airwire'))) {
             mkdir($path);
         }
 
@@ -33,7 +33,26 @@ class ComponentCommand extends Command
         }
         PHP);
 
-        Component::register($name);
-        $this->line("✨ Component app/Airwire/{$name}.php has been created and registered!\n");
+        $this->register($name);
+    }
+
+    protected function register($name)
+    {
+        try {
+            $path = app_path('Providers/AppServiceProvider.php');
+
+            $snake = Str::snake($name);
+
+            file_put_contents($path, str_replace(
+                "function boot()\n    {",
+                "function boot()\n    {\n        \Airwire\Airwire::component('{$snake}', {$name}::class);",
+                file_get_contents($path)
+            ));
+
+            $this->line("✨ Component app/Airwire/{$name}.php has been created and registered!");
+        } catch (Exception $exception)
+        {
+            $this->error('The component could not be registered. Please check your app/Providers/AppServiceProvider.php');
+        }
     }
 }
