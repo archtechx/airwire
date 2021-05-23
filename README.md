@@ -130,6 +130,23 @@ If you have an `app.js` file instead of an `app.ts` file, change the file suffix
 + mix.ts('resources/js/app.ts', 'public/js')
 ```
 
+If you're using TypeScript for the first time, you'll also need a `tsconfig.json` file in the the root of your project. You can use this one to get started:
+
+```json
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "strict": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "skipLibCheck": true
+  },
+  "include": ["resources/js/**/*"]
+}
+```
+
 And that's all! Airwire is fully installed.
 
 ## PHP components
