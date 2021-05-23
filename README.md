@@ -123,6 +123,13 @@ This will create `airwire.ts` and `airwired.d.ts`. Open your `app.ts` and import
 import Airwire from './airwire'
 ```
 
+If you have an `app.js` file instead of an `app.ts` file, change the file suffix and update your `webpack.mix.js` file:
+
+```diff
+- mix.js('resources/js/app.js', 'public/js')
++ mix.ts('resources/js/app.ts', 'public/js')
+```
+
 And that's all! Airwire is fully installed.
 
 ## PHP components
