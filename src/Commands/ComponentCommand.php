@@ -42,7 +42,7 @@ class ComponentCommand extends Command
         try {
             $path = app_path('Providers/AppServiceProvider.php');
 
-            $snake = Str::snake($name);
+            $snake = Str::kebab($name);
 
             file_put_contents($path, str_replace(
                 "function boot()\n    {",
