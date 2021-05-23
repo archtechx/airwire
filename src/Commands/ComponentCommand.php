@@ -2,6 +2,7 @@
 
 namespace Airwire\Commands;
 
+use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 
@@ -33,9 +34,25 @@ class ComponentCommand extends Command
         }
         PHP);
 
-        $this->line("✨ Component app/Airwire/{$name}.php has been created!\n");
+        $this->register($name);
+    }
 
-        $this->warn("🚧 Don't forget to register the component! Add the following line to AppServiceProvider:");
-        $this->line("\n\n    Airwire::component('" . Str::snake($name) . "', {$name}::class);\n\n");
+    protected function register($name)
+    {
+        try {
+            $path = app_path('Providers/AppServiceProvider.php');
+
+            $snake = Str::snake($name);
+
+            file_put_contents($path, str_replace(
+                "function boot()\n    {",
+                "function boot()\n    {\n        \Airwire\Airwire::component('{$snake}', {$name}::class);",
+                file_get_contents($path)
+            ));
+
+            $this->line("✨ Component app/Airwire/{$name}.php has been created and registered!");
+        } catch (Exception $exception) {
+            $this->error('The component could not be registered. Please check your app/Providers/AppServiceProvider.php');
+        }
     }
 }
