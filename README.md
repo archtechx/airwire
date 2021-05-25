@@ -2,6 +2,8 @@
 
 *A lightweight full-stack component layer that doesn't dictate your front-end framework*
 
+[Demo](https://github.com/archtechx/airwire-demo)
+
 ## Introduction
 
 Airwire is a thin layer between your Laravel code and your JavaScript.
