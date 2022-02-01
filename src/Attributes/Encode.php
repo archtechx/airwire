@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Airwire\Attributes;
 
 use Attribute;
@@ -11,7 +13,8 @@ class Encode
         public string|null $property = null,
         public string|null $method = null,
         public string|null $function = null,
-     ) {}
+    ) {
+    }
 
     public function encode(mixed $value): mixed
     {

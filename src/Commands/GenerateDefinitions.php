@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Airwire\Commands;
 
 use Airwire\Airwire;
@@ -36,7 +38,7 @@ class GenerateDefinitions extends Command
             $namedTypes .= "type {$alias} = {$type};\n\n";
         }
 
-        $typemap .= "}";
+        $typemap .= '}';
 
         $defaults = json_encode($defaults);
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Airwire\Concerns;
 
 use Illuminate\Validation\ValidationException;
@@ -31,7 +33,8 @@ trait ManagesLifecycle
             if (method_exists($this, 'dehydrate')) {
                 app()->call([$this, 'dehydrate'], $this->requestState);
             }
-        } catch (ValidationException) {}
+        } catch (ValidationException) {
+        }
 
         if (isset($this->errors) && ! $this->hasBeenReset) {
             $this->metadata['errors'] = $this->errors->toArray();

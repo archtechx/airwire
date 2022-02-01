@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Airwire\Concerns;
 
 use Illuminate\Contracts\Validation\Validator as AbstractValidator;
 use Illuminate\Support\Arr;
-use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\MessageBag;
 use Illuminate\Validation\ValidationException;
 
 trait ManagesValidation

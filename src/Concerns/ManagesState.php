@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Airwire\Concerns;
 
 use Airwire\Airwire;
+use Airwire\Attributes\Wired;
 use ReflectionMethod;
 use ReflectionObject;
 use ReflectionProperty;
-use Airwire\Attributes\Wired;
 
 trait ManagesState
 {

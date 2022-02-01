@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Airwire\Http;
 
 use Airwire\Airwire;
 use Airwire\Component;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Validator;
 
 class AirwireController
@@ -47,23 +48,35 @@ class AirwireController
                 }
             }],
             'state' => ['nullable', function ($attribute, $value, $fail) {
-                if (! is_array($value)) $fail('State must be an array.');
+                if (! is_array($value)) {
+                    $fail('State must be an array.');
+                }
                 foreach ($value as $k => $v) {
-                    if (! is_string($k)) $fail("[State] Property name must be a string, {$k} given.");
+                    if (! is_string($k)) {
+                        $fail("[State] Property name must be a string, {$k} given.");
+                    }
                 }
             }],
             'changes' => ['nullable', function ($attribute, $value, $fail) {
-                if (! is_array($value)) $fail('Changes must be an array.');
+                if (! is_array($value)) {
+                    $fail('Changes must be an array.');
+                }
 
                 foreach ($value as $k => $v) {
-                    if (! is_string($k)) $fail("[Changes] Property name must be a string, {$k} given.");
+                    if (! is_string($k)) {
+                        $fail("[Changes] Property name must be a string, {$k} given.");
+                    }
                 }
             }],
             'calls' => ['nullable', function ($attribute, $value, $fail) {
-                if (! is_array($value)) $fail('Calls must be an array.');
+                if (! is_array($value)) {
+                    $fail('Calls must be an array.');
+                }
 
                 foreach ($value as $k => $v) {
-                    if (! is_string($k)) $fail("[Calls] Method name must be a string, {$k} given.");
+                    if (! is_string($k)) {
+                        $fail("[Calls] Method name must be a string, {$k} given.");
+                    }
                 }
             }],
         ]);
