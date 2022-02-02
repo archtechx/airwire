@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Airwire;
 
 use Airwire\Attributes\Wired;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Collection;
@@ -206,7 +207,7 @@ class TypehintConverter
             }
         }
 
-        return join(' | ', $results);
+        return implode(' | ', $results);
     }
 
     public function convertMethod(object $object, string $method): string
@@ -228,7 +229,7 @@ class TypehintConverter
                 $types[] = 'null';
             }
 
-            $parameters[$parameter->getName()] = join(' | ', array_map(fn (ReflectionNamedType $type) => $this->convertType($type->getName(), 'parameter'), $types));
+            $parameters[$parameter->getName()] = implode(' | ', array_map(fn (ReflectionNamedType $type) => $this->convertType($type->getName(), 'parameter'), $types));
         }
 
         $parameters = collect($parameters)->map(fn (string $type, string $name) => "{$name}: {$type}")->join(', ');

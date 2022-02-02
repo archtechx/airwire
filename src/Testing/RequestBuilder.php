@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Airwire\Testing;
 
-use Airwire\Airwire;
 use Airwire\Component;
 use Airwire\Http\AirwireController;
 
@@ -10,7 +11,8 @@ class RequestBuilder
 {
     public function __construct(
         public string $alias,
-    ) {}
+    ) {
+    }
 
     public string $target = 'test';
 

@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Airwire\Commands;
 
 use Exception;
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
 class ComponentCommand extends Command
 {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Airwire;
 
 use Airwire\Attributes\Encode;
@@ -177,7 +179,7 @@ class Airwire
     {
         if (isset(static::$components[$component])) {
             return new RequestBuilder($component);
-        } else if (in_array($component, static::$components)) {
+        } elseif (in_array($component, static::$components)) {
             return new RequestBuilder(array_search($component, static::$components));
         }
 

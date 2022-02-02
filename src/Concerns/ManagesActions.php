@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Airwire\Concerns;
 
 use Airwire\Airwire;
-use ReflectionMethod;
-use ReflectionObject;
 use Illuminate\Foundation\Exceptions\Handler;
 use Illuminate\Validation\ValidationException;
+use ReflectionMethod;
+use ReflectionObject;
 use Throwable;
 
 trait ManagesActions
@@ -28,7 +30,8 @@ trait ManagesActions
         if ($changes) {
             try {
                 $this->changed($changes);
-            } catch (ValidationException) {}
+            } catch (ValidationException) {
+            }
         }
     }
 
@@ -77,7 +80,8 @@ trait ManagesActions
                             $result = array_merge($readonly, $result);
 
                             $this->readonly = array_unique(array_merge(
-                                $this->readonly, array_keys($readonly)
+                                $this->readonly,
+                                array_keys($readonly)
                             ));
                         }
                     }
