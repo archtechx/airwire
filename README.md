@@ -1,3 +1,5 @@
+> Note: **Development is currently paused**. It will be resumed after we launch [Lean Admin](https://lean-admin.dev) this year.
+
 # Airwire
 
 *A lightweight full-stack component layer that doesn't dictate your front-end framework*
